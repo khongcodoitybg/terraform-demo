@@ -29,7 +29,10 @@ module "ec2" {
   private_subnet_id     = module.vpc.private_subnet_id
   key_name              = var.key_name
   instance_sg_ids       = [module.security_groups.ec2_sg_id]
-  bastion_sg_ids        = [module.security_groups.bastion_sg_id]
+  fe_sg_ids             = [module.security_groups.fe_sg_id, module.security_groups.ec2_sg_id]
+  be_sg_ids             = [module.security_groups.be_sg_id, module.security_groups.ec2_sg_id]
+  db_sg_ids             = [module.security_groups.database_sg_id, module.security_groups.ec2_sg_id]
+  bastion_sg_ids        = [module.security_groups.bastion_sg_id, module.security_groups.ec2_sg_id]
 }
 
 module "lb" {

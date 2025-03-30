@@ -1,6 +1,6 @@
 # Tạo Elastic IP cho NAT Gateway
 resource "aws_eip" "nat" {
-  vpc = true
+  domain = "vpc"
 }
 
 # Tạo NAT Gateway trong public subnet
